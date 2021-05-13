@@ -14,6 +14,8 @@ import {
 import "react-pro-sidebar/dist/css/styles.css";
 import "../styles/Navigation.css";
 import Home from "./Home";
+import Bitcoin from "./Bitcoin";
+import TableView from "./TableView";
 import { FaBitcoin } from "react-icons/fa";
 import { RiSettings2Fill } from "react-icons/ri";
 import { BiTable } from "react-icons/bi";
@@ -54,15 +56,27 @@ function Navigation(props) {
             <Menu iconShape="square">
               <MenuItem icon={<FiHome />}>
                 Home
-                <Link to="/Home" />
+                <Link to="/" />
               </MenuItem>
               <SubMenu title="crypto" icon={<FaBitcoin />}>
                 Crypto Coins
-                <MenuItem>Bitcoin</MenuItem>
-                <MenuItem>Etherum </MenuItem>
-                <MenuItem>Doge Coin </MenuItem>
+                <MenuItem>
+                  Bitcoin
+                  <Link to="/Bitcoin" />
+                </MenuItem>
+                <MenuItem>
+                  Ethereum
+                  <Link to="/Ethereum" />
+                </MenuItem>
+                <MenuItem>
+                  Doge Coin
+                  <Link to="/Doge" />
+                </MenuItem>
               </SubMenu>
-              <MenuItem icon={<BiTable />}>Table View</MenuItem>
+              <MenuItem icon={<BiTable />}>
+                Table View
+                <Link to="/TableView" />
+              </MenuItem>
               <MenuItem icon={<BsFillBarChartFill />}>Chart</MenuItem>
               <MenuItem icon={<RiSettings2Fill />}>Settings</MenuItem>
             </Menu>
@@ -75,8 +89,14 @@ function Navigation(props) {
         </ProSidebar>
       </div>
       <Switch>
-        <Route path="/">
+        <Route exact path="/">
           <Home />
+        </Route>
+        <Route path="/Bitcoin">
+          <Bitcoin />
+        </Route>
+        <Route path="/TableView">
+          <TableView />
         </Route>
       </Switch>
     </Router>

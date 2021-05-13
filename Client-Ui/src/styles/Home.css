@@ -2,8 +2,10 @@
   text-align: center;
   margin-left: 8em;
 }
+
 .card-container {
   margin-left: 20em !important;
+  text-align: center;
 }
 .card-1 {
   background-color: orange !important;
