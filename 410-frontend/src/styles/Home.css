@@ -1,3 +1,10 @@
+.homepage > h1 {
+  text-align: center;
+  margin-left: 8em;
+}
+.card-container {
+  margin-left: 20em !important;
+}
 .card-1 {
   background-color: orange !important;
 }
@@ -8,4 +15,8 @@
 
 .card-3 {
   background-color: Green !important;
+}
+
+.card-body {
+  font-size: 3em;
 }

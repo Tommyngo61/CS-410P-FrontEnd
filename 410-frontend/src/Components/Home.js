@@ -5,9 +5,9 @@ import "../styles/Home.css";
 
 function Home() {
   return (
-    <div className="App">
+    <div className="mt-5 homepage">
       <h1>Crypto DashBoard</h1>
-      <Container className="mt-5">
+      <Container className="card-container mt-5">
         <Row>
           <Col>
             <Card border="primary">
