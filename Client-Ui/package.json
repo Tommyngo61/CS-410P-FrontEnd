@@ -10,6 +10,7 @@
     "bootstrap": "^4.6.0",
     "cdbreact": "^1.1.0",
     "chart.js": "^3.2.1",
+    "coingecko-api": "^1.0.10",
     "react": "^17.0.2",
     "react-bootstrap": "^1.5.2",
     "react-burger-menu": "^3.0.6",
