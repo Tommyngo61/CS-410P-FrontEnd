@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import { Line } from "react-chartjs-2";
+import axios from "axios";
 import "../styles/Bitcoin.css";
 function Bitcoin() {
   const labels = ["1", "2", "3"];
@@ -16,6 +17,22 @@ function Bitcoin() {
       },
     ],
   };
+
+  useEffect(() => {
+    const fetchData = async () => {
+      let qs = `?ids=bitcoin&vs_currencies=usd`;
+      try {
+        let res = await axios.get(
+          "https://api.coingecko.com/api/v3/simple/price" + qs
+        );
+        console.log(res);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchData();
+  });
+
   return (
     <Container className="Bitcoin mt-5 ">
       <Row>
