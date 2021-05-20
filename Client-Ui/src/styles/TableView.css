@@ -1,4 +1,6 @@
 /*220 side bar width*/
 .TableView {
   margin-left: 22em !important;
+  display: flex;
+  flex-direction: column;
 }
