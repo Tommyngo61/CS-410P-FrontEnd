@@ -20,13 +20,14 @@ import { FaBitcoin } from "react-icons/fa";
 import { RiSettings2Fill } from "react-icons/ri";
 import { BiTable } from "react-icons/bi";
 import { BsFillBarChartFill } from "react-icons/bs";
-
+import { BsPeople } from "react-icons/bs";
 import {
   FiHome,
   FiLogOut,
   FiArrowLeftCircle,
   FiArrowRightCircle,
 } from "react-icons/fi";
+import About from "./About";
 
 function Navigation(props) {
   //create initial menuCollapse state using useState hook
@@ -79,6 +80,10 @@ function Navigation(props) {
                 <Link to="/TableView" />
               </MenuItem>
               <MenuItem icon={<BsFillBarChartFill />}>Chart</MenuItem>
+              <MenuItem icon={<BsPeople />}>
+                About us
+                <Link to="/About" />
+              </MenuItem>
               <MenuItem icon={<RiSettings2Fill />}>Settings</MenuItem>
             </Menu>
           </SidebarContent>
@@ -95,6 +100,9 @@ function Navigation(props) {
         </Route>
         <Route path="/Bitcoin">
           <Bitcoin />
+        </Route>
+        <Route path="/About">
+          <About />
         </Route>
         <Route path="/TableView">
           <TableView />
