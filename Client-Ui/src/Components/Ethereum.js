@@ -2,8 +2,8 @@ import React, { useEffect, useState } from "react";
 import { Container, Row, Col, Card } from "react-bootstrap";
 import { Line } from "react-chartjs-2";
 import axios from "axios";
-import "../styles/Bitcoin.css";
-function Bitcoin() {
+import "../styles/Ethereum.css";
+function Ethereum() {
   const [loading, setLoading] = useState(false);
   const [price, setPrice] = useState("");
   const [coinData, setCoinData] = useState([]);
@@ -14,14 +14,16 @@ function Bitcoin() {
   useEffect(() => {
     const fetchSimpleData = async () => {
       setLoading(false);
-      let qs = `?ids=bitcoin&vs_currencies=usd`;
+      let qs = `?ids=ethereum&vs_currencies=usd`;
+      //?ids=bitcoin&vs_currencies=usd
+      //?ids=ethereum&vs_currencies=usd
       await axios
         .get("https://api.coingecko.com/api/v3/simple/price" + qs)
-        .then((res) => {
-          setPrice(res.data.bitcoin);
+        .then(({ data }) => {
+          setPrice(data.ethereum);
           //console.log(price);
           //console.log(res);
-          //console.log(res.data.bitcoin);
+          console.log(data.ethereum);
         })
         .catch((error) => {
           console.log(error);
@@ -29,7 +31,7 @@ function Bitcoin() {
     };
     const fetchCoinData = async () => {
       setLoading(false);
-      let qs = `bitcoin?localization=false&tickers=false&market_data=false&community_data=false&developer_data=false&sparkline=false`;
+      let qs = `ethereum?localization=false&tickers=false&market_data=false&community_data=false&developer_data=false&sparkline=false`;
       await axios
         .get("https://api.coingecko.com/api/v3/coins/" + qs)
         .then(({ data }) => {
@@ -76,7 +78,7 @@ function Bitcoin() {
   return (
     <>
       {loading ? (
-        <Container className="Bitcoin mt-5 ">
+        <Container className="Ethereum mt-5 ">
           <Row>
             <Col className="offset-2">
               <h1 className="text-center">
@@ -97,10 +99,10 @@ function Bitcoin() {
                   ),
                   datasets: [
                     {
-                      label: "Bitcoin change by day",
+                      label: `${coinData.name} change by day`,
                       data: chartData.map((data) => data[1]),
                       fill: false,
-                      borderColor: "rgb(242, 169, 0)",
+                      borderColor: "rgb(0, 96, 151)",
                       tension: 0.1,
                     },
                   ],
@@ -113,23 +115,23 @@ function Bitcoin() {
           </Row>
           <Row>
             <Col className="offset-4 offset-sm-2">
-              <Card className="btc-card-1">
-                <Card.Title className="btc-card-title text-center">
-                  <h2>About Bitcoin</h2>
+              <Card className="eth-card-1">
+                <Card.Title className="eth-card-title text-center">
+                  <h2>About {`${coinData.name}`}</h2>
                 </Card.Title>
-                <Card.Body className="btc-card-body">
+                <Card.Body className="eth-card-body">
                   <p>{`${coinData.description.en.slice(0, 934)}`}</p>
                 </Card.Body>
               </Card>
             </Col>
             <Col className="">
-              <Card className="btc-card-2">
-                <Card.Title className="btc-card-title text-center">
-                  <h2>Bitcoin Statistics</h2>
+              <Card className="eth-card-2">
+                <Card.Title className="eth-card-title text-center">
+                  <h2>{`${coinData.name}`} Statistics</h2>
                 </Card.Title>
-                <Card.Body className="btc-card-body ">
+                <Card.Body className="eth-card-body ">
                   <h5>Current Exchange Rate:</h5>
-                  <p>1 BTC = {`${price.usd}`} USD</p>
+                  <p>1 = {`${price.usd}`} USD</p>
                   <h5>Links:</h5>
                   <ul>
                     <li>Homepage Link: {`${coinData.links.homepage[0]}`}</li>
@@ -149,5 +151,4 @@ function Bitcoin() {
   );
 }
 
-//text from: https://whatis.techtarget.com/definition/Bitcoin#:~:text=Bitcoin%20is%20a%20digital%20currency,who%20accept%20Bitcoins%20as%20payment.&text=The%20P2P%20network%20monitors%20and%20verifies%20the%20transfer%20of%20Bitcoins%20between%20users.
-export default Bitcoin;
+export default Ethereum;

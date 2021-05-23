@@ -15,6 +15,8 @@ import "react-pro-sidebar/dist/css/styles.css";
 import "../styles/Navigation.css";
 import Home from "./Home";
 import Bitcoin from "./Bitcoin";
+import Ethereum from "./Ethereum";
+import Dogecoin from "./Dogecoin";
 import TableView from "./TableView";
 import { FaBitcoin } from "react-icons/fa";
 import { RiSettings2Fill } from "react-icons/ri";
@@ -71,8 +73,8 @@ function Navigation(props) {
                   <Link to="/Ethereum" />
                 </MenuItem>
                 <MenuItem>
-                  Doge Coin
-                  <Link to="/Doge" />
+                  Dogecoin
+                  <Link to="/Dogecoin" />
                 </MenuItem>
               </SubMenu>
               <MenuItem icon={<BiTable />}>
@@ -101,6 +103,11 @@ function Navigation(props) {
         <Route path="/Bitcoin">
           <Bitcoin />
         </Route>
+        <Route path="/Ethereum">
+          <Ethereum />
+        </Route>
+        <Route path="/Dogecoin">
+          <Dogecoin />
         <Route path="/About">
           <About />
         </Route>
