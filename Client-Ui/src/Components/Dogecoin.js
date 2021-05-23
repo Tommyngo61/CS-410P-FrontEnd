@@ -102,7 +102,7 @@ function Dogecoin() {
                       label: `${coinData.name} change by day`,
                       data: chartData.map((data) => data[1]),
                       fill: false,
-                      borderColor: "rgb(242, 169, 0)",
+                      borderColor: "rgb(225,179,3)",
                       tension: 0.1,
                     },
                   ],

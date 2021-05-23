@@ -49,7 +49,9 @@ function Ethereum() {
       setLoading(false);
       let qs = `?vs_currency=usd&days=30&interval=daily`;
       await axios
-        .get("https://api.coingecko.com/api/v3/coins/bitcoin/market_chart" + qs)
+        .get(
+          "https://api.coingecko.com/api/v3/coins/ethereum/market_chart" + qs
+        )
         .then(({ data }) => {
           console.log(data);
           setChartData(data.prices);
