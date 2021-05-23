@@ -108,6 +108,7 @@ function Navigation(props) {
         </Route>
         <Route path="/Dogecoin">
           <Dogecoin />
+        </Route>
         <Route path="/About">
           <About />
         </Route>
