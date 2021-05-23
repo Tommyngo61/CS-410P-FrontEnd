@@ -2,19 +2,19 @@
   margin-left: 8em !important;
 }
 
-.btc-card-title {
-  background-color: #f2a900;
+.doge-card-title {
+  background-color: #cb9800;
   position: sticky;
 }
 
-.btc-card-1 {
+.doge-card-1 {
   height: 40vh;
   overflow-y: scroll;
 }
 
-.btc-card-2 {
+.doge-card-2 {
   height: 40vh;
 }
-.btc-card-body {
+.doge-card-body {
   font-size: 1em;
 }

@@ -2,19 +2,19 @@
   margin-left: 8em !important;
 }
 
-.btc-card-title {
-  background-color: #f2a900;
+.eth-card-title {
+  background-color: #5ca6ce;
   position: sticky;
 }
 
-.btc-card-1 {
+.eth-card-1 {
   height: 40vh;
   overflow-y: scroll;
 }
 
-.btc-card-2 {
+.eth-card-2 {
   height: 40vh;
 }
-.btc-card-body {
+.eth-card-body {
   font-size: 1em;
 }

@@ -9,7 +9,7 @@ function App() {
   return (
     <Container fluid className="h-100">
       <Row>
-        <Col className="nav" xs={12}>
+        <Col className="nav">
           <Navigation></Navigation>
         </Col>
       </Row>

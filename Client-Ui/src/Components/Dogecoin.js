@@ -2,8 +2,8 @@ import React, { useEffect, useState } from "react";
 import { Container, Row, Col, Card } from "react-bootstrap";
 import { Line } from "react-chartjs-2";
 import axios from "axios";
-import "../styles/Bitcoin.css";
-function Bitcoin() {
+import "../styles/Dogecoin.css";
+function Dogecoin() {
   const [loading, setLoading] = useState(false);
   const [price, setPrice] = useState("");
   const [coinData, setCoinData] = useState([]);
@@ -14,14 +14,14 @@ function Bitcoin() {
   useEffect(() => {
     const fetchSimpleData = async () => {
       setLoading(false);
-      let qs = `?ids=bitcoin&vs_currencies=usd`;
+      let qs = `?ids=dogecoin&vs_currencies=usd`;
       await axios
         .get("https://api.coingecko.com/api/v3/simple/price" + qs)
-        .then((res) => {
-          setPrice(res.data.bitcoin);
+        .then(({ data }) => {
+          setPrice(data.dogecoin);
           //console.log(price);
           //console.log(res);
-          //console.log(res.data.bitcoin);
+          console.log(data.dogecoin);
         })
         .catch((error) => {
           console.log(error);
@@ -29,7 +29,7 @@ function Bitcoin() {
     };
     const fetchCoinData = async () => {
       setLoading(false);
-      let qs = `bitcoin?localization=false&tickers=false&market_data=false&community_data=false&developer_data=false&sparkline=false`;
+      let qs = `dogecoin?localization=false&tickers=false&market_data=false&community_data=false&developer_data=false&sparkline=false`;
       await axios
         .get("https://api.coingecko.com/api/v3/coins/" + qs)
         .then(({ data }) => {
@@ -47,7 +47,9 @@ function Bitcoin() {
       setLoading(false);
       let qs = `?vs_currency=usd&days=30&interval=daily`;
       await axios
-        .get("https://api.coingecko.com/api/v3/coins/bitcoin/market_chart" + qs)
+        .get(
+          "https://api.coingecko.com/api/v3/coins/dogecoin/market_chart" + qs
+        )
         .then(({ data }) => {
           console.log(data);
           setChartData(data.prices);
@@ -76,14 +78,14 @@ function Bitcoin() {
   return (
     <>
       {loading ? (
-        <Container className="Bitcoin mt-5 ">
+        <Container className="Dogecoin mt-5 ">
           <Row>
             <Col className="offset-2">
               <h1 className="text-center">
                 {coinData.name} ({coinData.symbol})
                 <img
                   alt={`${coinData.name} symbol`}
-                  src={`${coinData.image.thumb}`}
+                  src={`${coinData.image.small}`}
                 ></img>
               </h1>
             </Col>
@@ -97,7 +99,7 @@ function Bitcoin() {
                   ),
                   datasets: [
                     {
-                      label: "Bitcoin change by day",
+                      label: `${coinData.name} change by day`,
                       data: chartData.map((data) => data[1]),
                       fill: false,
                       borderColor: "rgb(242, 169, 0)",
@@ -113,23 +115,25 @@ function Bitcoin() {
           </Row>
           <Row>
             <Col className="offset-4 offset-sm-2">
-              <Card className="btc-card-1">
-                <Card.Title className="btc-card-title text-center">
-                  <h2>About Bitcoin</h2>
+              <Card className="doge-card-1">
+                <Card.Title className="doge-card-title text-center">
+                  <h2>About {coinData.name}</h2>
                 </Card.Title>
-                <Card.Body className="btc-card-body">
+                <Card.Body className="doge-card-body">
                   <p>{`${coinData.description.en.slice(0, 934)}`}</p>
                 </Card.Body>
               </Card>
             </Col>
             <Col className="">
-              <Card className="btc-card-2">
-                <Card.Title className="btc-card-title text-center">
-                  <h2>Bitcoin Statistics</h2>
+              <Card className="doge-card-2">
+                <Card.Title className="doge-card-title text-center">
+                  <h2>{coinData.name} Statistics</h2>
                 </Card.Title>
-                <Card.Body className="btc-card-body ">
+                <Card.Body className="doge-card-body ">
                   <h5>Current Exchange Rate:</h5>
-                  <p>1 BTC = {`${price.usd}`} USD</p>
+                  <p>
+                    1 {`${coinData.symbol}`}= {`${price.usd}`} USD
+                  </p>
                   <h5>Links:</h5>
                   <ul>
                     <li>Homepage Link: {`${coinData.links.homepage[0]}`}</li>
@@ -149,5 +153,4 @@ function Bitcoin() {
   );
 }
 
-//text from: https://whatis.techtarget.com/definition/Bitcoin#:~:text=Bitcoin%20is%20a%20digital%20currency,who%20accept%20Bitcoins%20as%20payment.&text=The%20P2P%20network%20monitors%20and%20verifies%20the%20transfer%20of%20Bitcoins%20between%20users.
-export default Bitcoin;
+export default Dogecoin;
