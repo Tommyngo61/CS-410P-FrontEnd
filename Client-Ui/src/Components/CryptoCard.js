@@ -46,6 +46,18 @@ export default function CryptoCard(props) {
     strokeOpacity: ".7",
   };
 
+  const getChangeColor = (changeValue) => {
+    if (parseInt(changeValue) < 0) {
+      return "red";
+    } else {
+      return "green";
+    }
+  };
+
+  const formatAsPercent = (value) => {
+    return parseFloat(value).toFixed(2) + "%";
+  };
+
   useEffect(() => {
     const getData = async () => {
       setIsLoading(false);
@@ -54,13 +66,18 @@ export default function CryptoCard(props) {
         .then(({ data }) => {
           setData(data);
           setPrice(dollarUS.format(data.market_data.current_price.usd));
-          console.log(data);
           setSparkData(data.market_data.sparkline_7d.price);
           setColor(calcLineColor(data.market_data.sparkline_7d.price));
           setLogo(data.image.small);
-          setDayChange(data.market_data.price_change_percentage_24h);
-          setWeekChange(data.market_data.price_change_percentage_7d);
-          setMonthChange(data.market_data.price_change_percentage_30d);
+          setDayChange(
+            formatAsPercent(data.market_data.price_change_percentage_24h)
+          );
+          setWeekChange(
+            formatAsPercent(data.market_data.price_change_percentage_7d)
+          );
+          setMonthChange(
+            formatAsPercent(data.market_data.price_change_percentage_30d)
+          );
         })
         .catch((err) => console.log(err));
       setIsLoading(true);
@@ -103,13 +120,22 @@ export default function CryptoCard(props) {
                   Current Price: {price}
                 </ListGroup.Item>
                 <ListGroup.Item style={{ fontSize: ".8em" }}>
-                  Day Change: {dayChange}
+                  Day Change:{" "}
+                  <span style={{ color: getChangeColor(dayChange) }}>
+                    {dayChange}
+                  </span>
                 </ListGroup.Item>
                 <ListGroup.Item style={{ fontSize: ".8em" }}>
-                  Week Change: {weekChange}
+                  Week Change:{" "}
+                  <span style={{ color: getChangeColor(weekChange) }}>
+                    {weekChange}
+                  </span>
                 </ListGroup.Item>
                 <ListGroup.Item style={{ fontSize: ".8em" }}>
-                  Month Change: {monthChange}
+                  Month Change:{" "}
+                  <span style={{ color: getChangeColor(monthChange) }}>
+                    {monthChange}
+                  </span>
                 </ListGroup.Item>
               </ListGroup>
             </Card.Text>
