@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Card from "react-bootstrap/Card";
+import ListGroup from "react-bootstrap/ListGroup";
 import axios from "axios";
 import { Line } from "react-chartjs-2";
 import {
@@ -7,7 +8,7 @@ import {
   SparklinesCurve,
   SparklinesReferenceLine,
 } from "react-sparklines";
-import { FaBlackberry } from "react-icons/fa";
+import Row from "react-bootstrap/Row";
 
 export default function CryptoCard(props) {
   const [data, setData] = useState([]);
@@ -15,8 +16,16 @@ export default function CryptoCard(props) {
   const [isLoading, setIsLoading] = useState(false);
   const [sparkData, setSparkData] = useState([]);
   const [sparkColor, setColor] = useState();
+  const [cryptoLogo, setLogo] = useState();
+  const [dayChange, setDayChange] = useState();
+  const [weekChange, setWeekChange] = useState();
+  const [monthChange, setMonthChange] = useState();
 
   const url = `https://api.coingecko.com/api/v3/coins/${props.id}?sparkline=true`;
+  const dollarUS = Intl.NumberFormat("en-US", {
+    style: "currency",
+    currency: "USD",
+  });
 
   const headerStyle = {
     color: "white",
@@ -37,43 +46,6 @@ export default function CryptoCard(props) {
     strokeOpacity: ".7",
   };
 
-  //   const chartOptions = {
-  // responsive: false,
-  // legend: {
-  //   display: false,
-  // },
-  // elements: {
-  //   line: {
-  //     borderColor: "#000000",
-  //     borderWidth: 1,
-  //   },
-  //   point: {
-  //     radius: 0,
-  //   },
-  // },
-  // tooltips: {
-  //   enabled: false,
-  // },
-  //     scales: {
-  //       yAxes: [
-  //         {
-  //           display: false,
-  //           gridLines: {
-  //             display: false,
-  //           },
-  //         },
-  //       ],
-  //       xAxes: [
-  //         {
-  //           display: false,
-  //           gridLines: {
-  //             display: false,
-  //           },
-  //         },
-  //       ],
-  //     },
-  //   };
-
   useEffect(() => {
     const getData = async () => {
       setIsLoading(false);
@@ -81,10 +53,14 @@ export default function CryptoCard(props) {
         .get(url)
         .then(({ data }) => {
           setData(data);
-          setPrice(data.market_data.current_price.usd);
-          console.log(data.market_data.sparkline_7d.price);
+          setPrice(dollarUS.format(data.market_data.current_price.usd));
+          console.log(data);
           setSparkData(data.market_data.sparkline_7d.price);
           setColor(calcLineColor(data.market_data.sparkline_7d.price));
+          setLogo(data.image.small);
+          setDayChange(data.market_data.price_change_percentage_24h);
+          setWeekChange(data.market_data.price_change_percentage_7d);
+          setMonthChange(data.market_data.price_change_percentage_30d);
         })
         .catch((err) => console.log(err));
       setIsLoading(true);
@@ -111,7 +87,32 @@ export default function CryptoCard(props) {
             {data.name}
           </Card.Header>
           <Card.Body>
-            Current Price: {price}
+            <Row>
+              <img
+                src={cryptoLogo}
+                alt={`Logo for ${data.name}`}
+                style={{ margin: "auto" }}
+              ></img>
+            </Row>
+            <Card.Text style={{ display: "inline-block" }}>
+              <ListGroup>
+                <ListGroup.Item style={{ fontSize: ".8em" }}>
+                  Symbol: {data.symbol.toUpperCase()}
+                </ListGroup.Item>
+                <ListGroup.Item style={{ fontSize: ".8em" }}>
+                  Current Price: {price}
+                </ListGroup.Item>
+                <ListGroup.Item style={{ fontSize: ".8em" }}>
+                  Day Change: {dayChange}
+                </ListGroup.Item>
+                <ListGroup.Item style={{ fontSize: ".8em" }}>
+                  Week Change: {weekChange}
+                </ListGroup.Item>
+                <ListGroup.Item style={{ fontSize: ".8em" }}>
+                  Month Change: {monthChange}
+                </ListGroup.Item>
+              </ListGroup>
+            </Card.Text>
             <Sparklines data={sparkData}>
               <SparklinesCurve color={sparkColor} />
               <SparklinesReferenceLine type="avg" style={avgLineStyle} />

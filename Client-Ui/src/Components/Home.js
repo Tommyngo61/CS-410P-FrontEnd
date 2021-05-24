@@ -43,7 +43,13 @@ function Home() {
         </Row> */}
         <Row>
           <Col>
-            <CryptoCard id="bitcoin" color="orange"></CryptoCard>
+            <CryptoCard id="bitcoin" color="#f2a900"></CryptoCard>
+          </Col>
+          <Col>
+            <CryptoCard id="ethereum" color="#5ca6ce"></CryptoCard>
+          </Col>
+          <Col>
+            <CryptoCard id="dogecoin" color="#cb9800"></CryptoCard>
           </Col>
         </Row>
       </Container>
