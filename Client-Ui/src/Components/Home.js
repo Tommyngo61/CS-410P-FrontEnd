@@ -1,5 +1,6 @@
 import React from "react";
 import Card from "react-bootstrap/Card";
+import CryptoCard from "./CryptoCard";
 import { Container, Row, Col } from "react-bootstrap";
 import "../styles/Home.css";
 
@@ -38,6 +39,11 @@ function Home() {
                 MONEY MONEY MONEY
               </Card.Body>
             </Card>
+          </Col>
+        </Row>
+        <Row>
+          <Col>
+            <CryptoCard id="bitcoin"></CryptoCard>
           </Col>
         </Row>
       </Container>
