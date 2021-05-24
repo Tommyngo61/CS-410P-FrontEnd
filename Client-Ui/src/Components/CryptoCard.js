@@ -8,6 +8,13 @@ export default function CryptoCard(props) {
 
   const url = `https://api.coingecko.com/api/v3/coins/${props.id}?sparkline=true`;
 
+  const headerStyle = {
+    color: "white",
+    backgroundColor: props.color ? props.color : "black",
+    textShadow:
+      "-1px -1px 0px #000, 0px -1px 0px #000, 1px -1px 0px #000, -1px  0px 0px #000, 1px  0px 0px #000, -1px  1px 0px #000, 0px  1px 0px #000, 1px  1px 0px #000",
+  };
+
   useEffect(() => {
     const getData = async () => {
       setIsLoading(false);
@@ -25,7 +32,9 @@ export default function CryptoCard(props) {
   }, [url]);
   return (
     <Card>
-      <Card.Header as="h2">{data.name}</Card.Header>
+      <Card.Header as="h2" style={headerStyle}>
+        {data.name}
+      </Card.Header>
     </Card>
   );
 }
