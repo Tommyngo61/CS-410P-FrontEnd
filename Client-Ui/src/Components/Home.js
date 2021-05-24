@@ -9,7 +9,7 @@ function Home() {
     <div className="mt-5 homepage">
       <h1>Crypto DashBoard</h1>
       <Container className="card-container mt-5">
-        <Row>
+        {/* <Row>
           <Col>
             <Card border="primary">
               <Card.Header className="card-1" as="h2">
@@ -40,7 +40,7 @@ function Home() {
               </Card.Body>
             </Card>
           </Col>
-        </Row>
+        </Row> */}
         <Row>
           <Col>
             <CryptoCard id="bitcoin" color="orange"></CryptoCard>
