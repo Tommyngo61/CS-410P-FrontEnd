@@ -1,0 +1,12 @@
+.container {
+  margin-left: 25em !important;
+}
+.description {
+  max-height: 200px;
+  overflow: scroll;
+  border: 1px solid grey;
+  padding: 5px;
+}
+.description::-webkit-scrollbar {
+  display: none;
+}

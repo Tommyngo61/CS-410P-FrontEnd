@@ -3,11 +3,13 @@ import { Container, Row, Col, Card } from "react-bootstrap";
 import { Line } from "react-chartjs-2";
 import axios from "axios";
 import "../styles/Ethereum.css";
+import ReactHtmlParser from "react-html-parser";
 function Ethereum() {
   const [loading, setLoading] = useState(false);
   const [price, setPrice] = useState("");
   const [coinData, setCoinData] = useState([]);
   const [chartData, setChartData] = useState([]);
+  const [description, setDescription] = useState("");
   //const [dataSet, setDataSet] = useState([]);
   //const [chartDate, setChartDate] = useState([]);
 
@@ -37,6 +39,7 @@ function Ethereum() {
         .then(({ data }) => {
           console.log(data);
           setCoinData(data);
+          setDescription(data.description.en);
           //console.log(coinData);
         })
         .catch((error) => {
@@ -76,7 +79,9 @@ function Ethereum() {
     //console.log(coinData);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
+  function numberWithCommas(str) {
+    return str.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  }
   return (
     <>
       {loading ? (
@@ -96,9 +101,10 @@ function Ethereum() {
             <Col className="offset-1 offset-lg-0">
               <Line
                 data={{
-                  labels: chartData.map(
-                    (data) => "day " + data[0] / (1000 * 60 * 60 * 24)
-                  ),
+                  labels: [
+                    30, 29, 28, 27, 26, 25, 24, 23, 22, 21, 20, 19, 18, 17, 16,
+                    15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0,
+                  ],
                   datasets: [
                     {
                       label: `${coinData.name} change by day`,
@@ -122,7 +128,7 @@ function Ethereum() {
                   <h2>About {`${coinData.name}`}</h2>
                 </Card.Title>
                 <Card.Body className="eth-card-body">
-                  <p>{`${coinData.description.en.slice(0, 934)}`}</p>
+                  <p>{ReactHtmlParser(description)}</p>
                 </Card.Body>
               </Card>
             </Col>
@@ -133,12 +139,18 @@ function Ethereum() {
                 </Card.Title>
                 <Card.Body className="eth-card-body ">
                   <h5>Current Exchange Rate:</h5>
-                  <p>1 = {`${price.usd}`} USD</p>
+                  <p>1 = {numberWithCommas(price.usd)} USD</p>
                   <h5>Links:</h5>
                   <ul>
-                    <li>Homepage Link: {`${coinData.links.homepage[0]}`}</li>
                     <li>
-                      Blockchain Link: {`${coinData.links.blockchain_site[0]}`}
+                      <a href={`${coinData.links.homepage[0]}`}>
+                        Homepage Link
+                      </a>
+                    </li>
+                    <li>
+                      <a href={`${coinData.links.blockchain_site[0]}`}>
+                        Blockchain Link
+                      </a>
                     </li>
                   </ul>
                 </Card.Body>

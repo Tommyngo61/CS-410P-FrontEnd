@@ -1,5 +1,6 @@
 import React from "react";
 import Card from "react-bootstrap/Card";
+import CryptoCard from "./CryptoCard";
 import { Container, Row, Col } from "react-bootstrap";
 import "../styles/Home.css";
 
@@ -8,7 +9,7 @@ function Home() {
     <div className="mt-5 homepage">
       <h1>Crypto DashBoard</h1>
       <Container className="card-container mt-5">
-        <Row>
+        {/* <Row>
           <Col>
             <Card border="primary">
               <Card.Header className="card-1" as="h2">
@@ -38,6 +39,17 @@ function Home() {
                 MONEY MONEY MONEY
               </Card.Body>
             </Card>
+          </Col>
+        </Row> */}
+        <Row>
+          <Col>
+            <CryptoCard id="bitcoin" color="#f2a900"></CryptoCard>
+          </Col>
+          <Col>
+            <CryptoCard id="ethereum" color="#5ca6ce"></CryptoCard>
+          </Col>
+          <Col>
+            <CryptoCard id="dogecoin" color="#cb9800"></CryptoCard>
           </Col>
         </Row>
       </Container>
