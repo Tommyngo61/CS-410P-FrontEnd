@@ -2,6 +2,7 @@ import React from "react";
 import { Container, Card } from "react-bootstrap";
 import "../styles/About.css";
 import Rio from "../images/RioLe.jpg";
+import Tommy from "../images/Tommy.jpg";
 const About = () => {
   return (
     <>
@@ -14,10 +15,10 @@ const About = () => {
           </Card.Body>
         </Card>
         <Card className="about-us-card" style={{ width: "25rem" }}>
-          <Card.Img className="img" variant="top" src="holder.js/100px180" />
+          <Card.Img className="img" variant="top" src={Tommy} />
           <Card.Body>
             <Card.Title className="title">Tommy Ngo</Card.Title>
-            <Card.Text>Some quick exampu</Card.Text>
+            <Card.Text>I like to sleep</Card.Text>
           </Card.Body>
         </Card>
         <Card className="about-us-card" style={{ width: "25rem" }}>

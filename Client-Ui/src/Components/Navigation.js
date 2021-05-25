@@ -18,6 +18,7 @@ import Bitcoin from "./Bitcoin";
 import Ethereum from "./Ethereum";
 import Dogecoin from "./Dogecoin";
 import TableView from "./TableView";
+import Chart from "./Chart";
 import { FaBitcoin } from "react-icons/fa";
 import { RiSettings2Fill } from "react-icons/ri";
 import { BiTable } from "react-icons/bi";
@@ -82,7 +83,10 @@ function Navigation(props) {
                 Table View
                 <Link to="/TableView" />
               </MenuItem>
-              <MenuItem icon={<BsFillBarChartFill />}>Chart</MenuItem>
+              <MenuItem icon={<BsFillBarChartFill />}>
+                Chart
+                <Link to="/Chart" />
+              </MenuItem>
               <MenuItem icon={<BsBook />}>
                 Search <Link to="/Search" />
               </MenuItem>
@@ -121,6 +125,9 @@ function Navigation(props) {
         </Route>
         <Route path="/TableView">
           <TableView />
+        </Route>
+        <Route path="/Chart">
+          <Chart />
         </Route>
       </Switch>
     </Router>
