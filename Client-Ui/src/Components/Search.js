@@ -8,6 +8,7 @@ const Search = () => {
   const [coinName, setCoinName] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [data, setData] = useState();
+
   const fetchdata = (e) => {
     e.preventDefault();
     if (!coinName) {

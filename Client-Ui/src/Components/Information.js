@@ -1,5 +1,6 @@
 import React from "react";
 import { Container, Form, Button, Col, Row, Image } from "react-bootstrap";
+import ReactHtmlParser from "react-html-parser";
 const Information = ({ data }) => {
   console.log(data);
   function numberWithCommas(x) {
@@ -25,7 +26,7 @@ const Information = ({ data }) => {
         <Col>
           <h2>Description</h2>
           <div className="description">
-            <p>{data.description.en}</p>
+            <p>{ReactHtmlParser(data.description.en)}</p>
           </div>
         </Col>
         <Col></Col>
