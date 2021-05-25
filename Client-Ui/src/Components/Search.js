@@ -8,22 +8,37 @@ const Search = () => {
   const [coinName, setCoinName] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [data, setData] = useState();
-
+  const [chartData, setChartData] = useState([]);
   const fetchdata = (e) => {
     e.preventDefault();
     if (!coinName) {
       return;
     }
     const getData = async () => {
-      setIsLoading(false);
       await axios
         .get(
-          `https://api.coingecko.com/api/v3/coins/${coinName}?localization=false&tickers=true&market_data=true&community_data=false&developer_data=false&sparkline=true`
+          `https://api.coingecko.com/api/v3/coins/${coinName}?localization=false&tickers=false&market_data=true&community_data=false&developer_data=false&sparkline=false`
         )
-        .then(({ data }) => setData(data))
+        .then(({ data }) => {
+          setData(data);
+        })
         .catch((err) => console.log(err));
+      let qs = `?vs_currency=usd&days=30&interval=daily`;
+      await axios
+        .get(
+          `https://api.coingecko.com/api/v3/coins/${coinName}/market_chart` + qs
+        )
+        .then(({ data }) => {
+          console.log(data);
+          setChartData(data.prices);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+
       setIsLoading(true);
     };
+
     getData();
   };
   return (
@@ -47,7 +62,7 @@ const Search = () => {
             </Col>
           </Form.Row>
         </Form>
-        {isLoading && <Information data={data} />}
+        {isLoading && <Information data={data} chart={chartData} />}
       </Container>
     </>
   );

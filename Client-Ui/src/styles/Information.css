@@ -1,0 +1,20 @@
+.chart {
+  margin-left: 8em !important;
+}
+
+.any-card-title {
+  background-color: #c1c1c1;
+  position: sticky;
+}
+
+.any-card-1 {
+  height: 40vh;
+  overflow-y: scroll;
+}
+
+.any-card-2 {
+  height: 40vh;
+}
+.any-card-body {
+  font-size: 1em;
+}
