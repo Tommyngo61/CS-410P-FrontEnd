@@ -59,10 +59,10 @@ function Chart(props) {
 
     loadData();
   }, []);
-  const buildChart = () => {};
+  //const buildChart = () => {};
   const searchFind = async (event) => {
     const fetchGraphDataX = async () => {
-      setLoading(false);
+      //setLoading(false);
       let qs = `?vs_currency=usd&days=30&interval=daily`;
       await axios
         .get(
@@ -71,13 +71,17 @@ function Chart(props) {
         .then(({ data }) => {
           console.log("x data", data);
           setXData(data.prices);
+          setLoading(true);
           return data.prices;
         })
         .catch((error) => {
           console.log(error);
+          setLoading(false);
+          alert("Failed to fetch with that id");
         });
     };
     await fetchGraphDataX();
+    //setLoading(true);
   };
 
   const handleSubmit = (e) => {
@@ -88,21 +92,109 @@ function Chart(props) {
   return (
     <Container className=" mt-5 d-flex justify-content-center">
       <Row>
-        <Form>
+        <Form onSubmit={handleSubmit}>
           <Form.Group controlId="search">
-            <Form.Label>Search For a Crypto Currency</Form.Label>
+            <Form.Label>Crypto Currency Search </Form.Label>
             <Form.Control
               type="text"
               onChange={(e) => setSearch(e.target.value)}
               value={search}
               placeholder="Search for a Crypto Coin"
             />
-            <Button variant="primary" onSubmit={handleSubmit}>
-              Search
-            </Button>
           </Form.Group>
+          <Button type="submit" variant="primary">
+            Search
+          </Button>
         </Form>
       </Row>
+      <br></br>
+
+      {loading ? (
+        <Container>
+          <Row className="justify-content-center">
+            <h1>USD value Chart</h1>
+          </Row>
+          <Row>
+            <Line
+              data={{
+                labels: [
+                  30, 29, 28, 27, 26, 25, 24, 23, 22, 21, 20, 19, 18, 17, 16,
+                  15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0,
+                ],
+                datasets: [
+                  {
+                    label: `${search} change by day`,
+                    data: xData.map((data) => data[1]),
+                    fill: false,
+                    borderColor: "rgb( 170, 1, 20)",
+                    tension: 0.1,
+                  },
+                  {
+                    label: "Bitcoin change by day",
+                    data: btcData.map((data) => data[1]),
+                    fill: false,
+                    borderColor: "rgb(242, 169, 0)",
+                    tension: 0.1,
+                  },
+                  {
+                    label: "Ethereum change by day",
+                    data: ethData.map((data) => data[1]),
+                    fill: false,
+                    borderColor: "rgb(0, 96, 151)",
+                    tension: 0.1,
+                  },
+                  {
+                    label: "Dogecoin change by day",
+                    data: dogeData.map((data) => data[1]),
+                    fill: false,
+                    borderColor: "rgb(225,179,3)",
+                    tension: 0.1,
+                  },
+                ],
+              }}
+              options={{
+                responsive: true,
+                scales: {
+                  x: {
+                    display: true,
+                    title: {
+                      display: true,
+                      text: "Amount of days ago",
+                      color: "blue",
+                      font: {
+                        family: "Times",
+                        size: 20,
+                        weight: "normal",
+                        lineHeight: 1.2,
+                      },
+                      padding: { top: 20, left: 0, right: 0, bottom: 0 },
+                    },
+                  },
+                  y: {
+                    display: true,
+                    title: {
+                      display: true,
+                      text: "Value in USD",
+                      color: "blue",
+                      font: {
+                        family: "Times",
+                        size: 20,
+                        style: "normal",
+                        lineHeight: 1.2,
+                      },
+                      padding: { top: 30, left: 0, right: 0, bottom: 0 },
+                    },
+                  },
+                },
+              }}
+              width={700}
+              height={600}
+            />
+          </Row>
+        </Container>
+      ) : (
+        ""
+      )}
     </Container>
   );
 }
@@ -118,9 +210,10 @@ export default Chart;
     <Row>
       <Line
         data={{
-          labels: btcData.map(
-            (data) => "day " + data[0] / (1000 * 60 * 60 * 24)
-          ),
+          labels: [
+                    30, 29, 28, 27, 26, 25, 24, 23, 22, 21, 20, 19, 18, 17, 16,
+                    15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0,
+                  ],
           datasets: [
             {
               label: "Bitcoin change by day",

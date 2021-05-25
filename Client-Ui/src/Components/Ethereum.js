@@ -117,7 +117,42 @@ function Ethereum() {
                 }}
                 width={200}
                 height={300}
-                options={{ maintainAspectRatio: false }}
+                options={{
+                  responsive: true,
+                  maintainAspectRatio: false,
+                  scales: {
+                    x: {
+                      display: true,
+                      title: {
+                        display: true,
+                        text: "Amount of days ago",
+                        color: "rgb(0, 96, 151)",
+                        font: {
+                          family: "Times",
+                          size: 20,
+                          weight: "normal",
+                          lineHeight: 1.2,
+                        },
+                        padding: { top: 20, left: 0, right: 0, bottom: 0 },
+                      },
+                    },
+                    y: {
+                      display: true,
+                      title: {
+                        display: true,
+                        text: "Value in USD",
+                        color: "rgb(0, 96, 151)",
+                        font: {
+                          family: "Times",
+                          size: 20,
+                          style: "normal",
+                          lineHeight: 1.2,
+                        },
+                        padding: { top: 30, left: 0, right: 0, bottom: 0 },
+                      },
+                    },
+                  },
+                }}
               />
             </Col>
           </Row>
