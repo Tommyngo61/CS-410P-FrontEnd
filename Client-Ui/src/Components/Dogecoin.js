@@ -99,9 +99,11 @@ function Dogecoin() {
             <Col className="offset-1 offset-lg-0">
               <Line
                 data={{
-                  labels: chartData.map(
-                    (data) => "day " + data[0] / (1000 * 60 * 60 * 24)
-                  ),
+                  labels: [
+                    30, 29, 28, 27, 26, 25, 24, 23, 22, 21, 20, 19, 18, 17, 16,
+                    15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0,
+                  ],
+                  //chartData.map((data) => "day " + data[0] / (1000 * 60 * 60 * 24)    ),
                   datasets: [
                     {
                       label: `${coinData.name} change by day`,
