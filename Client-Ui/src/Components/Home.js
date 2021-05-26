@@ -43,17 +43,17 @@ function Home() {
           </Col>
         </Row> */}
         <Row>
-          <Col>
+          <Col className="col-12 col-lg-4">
             <Link class="card-link" to="/Bitcoin">
               <CryptoCard id="bitcoin" color="#f2a900"></CryptoCard>
             </Link>
           </Col>
-          <Col>
+          <Col className="col-12 col-lg-4">
             <Link class="card-link" to="/Ethereum">
               <CryptoCard id="ethereum" color="#5ca6ce"></CryptoCard>
             </Link>
           </Col>
-          <Col>
+          <Col className="col-12 col-lg-4">
             <Link class="card-link" to="/Dogecoin">
               <CryptoCard id="dogecoin" color="#cb9800"></CryptoCard>
             </Link>
