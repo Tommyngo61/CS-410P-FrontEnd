@@ -2,13 +2,13 @@ import React, { useState, useEffect } from "react";
 import Card from "react-bootstrap/Card";
 import ListGroup from "react-bootstrap/ListGroup";
 import axios from "axios";
-import { Line } from "react-chartjs-2";
 import {
   Sparklines,
   SparklinesCurve,
   SparklinesReferenceLine,
 } from "react-sparklines";
 import Row from "react-bootstrap/Row";
+import "../styles/CryptoCard.css";
 
 export default function CryptoCard(props) {
   const [data, setData] = useState([]);
@@ -99,7 +99,7 @@ export default function CryptoCard(props) {
   return (
     <>
       {isLoading ? (
-        <Card>
+        <Card className="crypto-card">
           <Card.Header as="h2" style={headerStyle}>
             {data.name}
           </Card.Header>
@@ -139,11 +139,21 @@ export default function CryptoCard(props) {
                 </ListGroup.Item>
               </ListGroup>
             </Card.Text>
-            <Sparklines data={sparkData}>
-              <SparklinesCurve color={sparkColor} />
-              <SparklinesReferenceLine type="avg" style={avgLineStyle} />
-              <SparklinesReferenceLine type="max" style={maxLineStyle} />
-            </Sparklines>
+            <ListGroup>
+              <ListGroup.Item
+                classsName="spark-title"
+                style={{ fontSize: ".4em" }}
+              >
+                Past Week Performance
+              </ListGroup.Item>
+              <ListGroup.Item className="spark-chart">
+                <Sparklines data={sparkData}>
+                  <SparklinesCurve className="sparkline" color={sparkColor} />
+                  <SparklinesReferenceLine type="avg" style={avgLineStyle} />
+                  <SparklinesReferenceLine type="max" style={maxLineStyle} />
+                </Sparklines>
+              </ListGroup.Item>
+            </ListGroup>
           </Card.Body>
         </Card>
       ) : (
