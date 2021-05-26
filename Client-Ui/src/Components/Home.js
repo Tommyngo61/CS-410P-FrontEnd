@@ -3,10 +3,11 @@ import Card from "react-bootstrap/Card";
 import CryptoCard from "./CryptoCard";
 import { Container, Row, Col } from "react-bootstrap";
 import "../styles/Home.css";
+import { Route, Switch, Link, BrowserRouter as Router } from "react-router-dom";
 
 function Home() {
   return (
-    <div className="mt-5 homepage">
+    <div className="homepage">
       <h1>Crypto DashBoard</h1>
       <Container className="card-container mt-5">
         {/* <Row>
@@ -42,14 +43,20 @@ function Home() {
           </Col>
         </Row> */}
         <Row>
-          <Col>
-            <CryptoCard id="bitcoin" color="#f2a900"></CryptoCard>
+          <Col className="col-12 col-lg-4">
+            <Link class="card-link" to="/Bitcoin">
+              <CryptoCard id="bitcoin" color="#f2a900"></CryptoCard>
+            </Link>
           </Col>
-          <Col>
-            <CryptoCard id="ethereum" color="#5ca6ce"></CryptoCard>
+          <Col className="col-12 col-lg-4">
+            <Link class="card-link" to="/Ethereum">
+              <CryptoCard id="ethereum" color="#5ca6ce"></CryptoCard>
+            </Link>
           </Col>
-          <Col>
-            <CryptoCard id="dogecoin" color="#cb9800"></CryptoCard>
+          <Col className="col-12 col-lg-4">
+            <Link class="card-link" to="/Dogecoin">
+              <CryptoCard id="dogecoin" color="#cb9800"></CryptoCard>
+            </Link>
           </Col>
         </Row>
       </Container>

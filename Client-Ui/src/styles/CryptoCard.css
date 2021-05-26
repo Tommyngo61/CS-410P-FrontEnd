@@ -1,0 +1,43 @@
+.crypto-card:hover {
+  background-color: rgb(149, 217, 229);
+  border-color: black;
+}
+
+.crypto-card:hover img {
+  animation: pulse 1s linear infinite;
+}
+
+@keyframes pulse {
+  0% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+  50% {
+    -webkit-transform: scale(0.8);
+    transform: scale(0.8);
+  }
+  100% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+}
+
+.crypto-card .card-text {
+  height: fit-content;
+}
+
+.crypto-card:hover .list-group-item {
+  border-color: black;
+}
+
+.crypto-card:hover .card-body svg {
+  background-color: white;
+}
+
+.spark-title {
+  border-bottom: none;
+}
+
+.spark-chart {
+  border-top: none;
+}
