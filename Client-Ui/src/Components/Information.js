@@ -1,6 +1,6 @@
 import React from "react";
 import { Col, Row, Card } from "react-bootstrap";
-import { Line } from "react-chartjs-2";
+import { Line, Pie } from "react-chartjs-2";
 import ReactHtmlParser from "react-html-parser";
 import "../styles/Information.css";
 const Information = ({ data, chart }) => {
@@ -19,7 +19,7 @@ const Information = ({ data, chart }) => {
         </Col>
       </Row>
       <Row className="mb-2 chart text-center">
-        <Col className="offset-1 offset-lg-0">
+        <Col width="100">
           <Line
             data={{
               labels: [
@@ -115,6 +115,32 @@ const Information = ({ data, chart }) => {
                 </li>
               </ul>
             </Card.Body>
+          </Card>
+        </Col>
+        <Col>
+          <Card>
+            <div>
+              <Pie
+                data={{
+                  labels: [
+                    "Circulating_supply",
+                    `Total supply ${data.market_data.max_supply}`,
+                  ],
+                  datasets: [
+                    {
+                      label: "My First Dataset",
+                      data: [
+                        data.market_data.circulating_supply,
+                        data.market_data.max_supply -
+                          data.market_data.circulating_supply,
+                      ],
+                      backgroundColor: ["black", "grey"],
+                      hoverOffset: 4,
+                    },
+                  ],
+                }}
+              />
+            </div>
           </Card>
         </Col>
       </Row>

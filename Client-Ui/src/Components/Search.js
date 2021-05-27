@@ -43,7 +43,7 @@ const Search = () => {
   };
   return (
     <>
-      <Container className="container">
+      <Container className="container-xl">
         <Form className="form" onSubmit={fetchdata}>
           <Form.Row className="align-items-center">
             <Col xs="auto" md="auto">
