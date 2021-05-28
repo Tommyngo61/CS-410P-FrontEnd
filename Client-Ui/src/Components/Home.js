@@ -1,6 +1,7 @@
 import React from "react";
 import Card from "react-bootstrap/Card";
 import CryptoCard from "./CryptoCard";
+import MarketCapChart from "./MarketCapChart";
 import { Container, Row, Col } from "react-bootstrap";
 import "../styles/Home.css";
 import { Route, Switch, Link, BrowserRouter as Router } from "react-router-dom";
@@ -44,20 +45,23 @@ function Home() {
         </Row> */}
         <Row>
           <Col className="col-12 col-lg-4">
-            <Link class="card-link" to="/Bitcoin">
+            <Link className="card-link" to="/Bitcoin">
               <CryptoCard id="bitcoin" color="#f2a900"></CryptoCard>
             </Link>
           </Col>
           <Col className="col-12 col-lg-4">
-            <Link class="card-link" to="/Ethereum">
+            <Link className="card-link" to="/Ethereum">
               <CryptoCard id="ethereum" color="#5ca6ce"></CryptoCard>
             </Link>
           </Col>
           <Col className="col-12 col-lg-4">
-            <Link class="card-link" to="/Dogecoin">
+            <Link className="card-link" to="/Dogecoin">
               <CryptoCard id="dogecoin" color="#cb9800"></CryptoCard>
             </Link>
           </Col>
+        </Row>
+        <Row>
+          <MarketCapChart className="market-chart"></MarketCapChart>
         </Row>
       </Container>
     </div>

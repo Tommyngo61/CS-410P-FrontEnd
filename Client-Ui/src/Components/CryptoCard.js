@@ -111,37 +111,37 @@ export default function CryptoCard(props) {
                 style={{ margin: "auto" }}
               ></img>
             </Row>
-            <Card.Text style={{ display: "inline-block" }}>
-              <ListGroup>
-                <ListGroup.Item style={{ fontSize: ".8em" }}>
-                  Symbol: {data.symbol.toUpperCase()}
-                </ListGroup.Item>
-                <ListGroup.Item style={{ fontSize: ".8em" }}>
-                  Current Price: {price}
-                </ListGroup.Item>
-                <ListGroup.Item style={{ fontSize: ".8em" }}>
-                  Day Change:{" "}
-                  <span style={{ color: getChangeColor(dayChange) }}>
-                    {dayChange}
-                  </span>
-                </ListGroup.Item>
-                {/* <ListGroup.Item style={{ fontSize: ".8em" }}>
+            {/* <Card.Text style={{ display: "inline-block" }}> */}
+            <ListGroup>
+              <ListGroup.Item style={{ fontSize: ".5em" }}>
+                Symbol: {data.symbol.toUpperCase()}
+              </ListGroup.Item>
+              <ListGroup.Item style={{ fontSize: ".5em" }}>
+                Current Price: {price}
+              </ListGroup.Item>
+              <ListGroup.Item style={{ fontSize: ".5em" }}>
+                Day Change:{" "}
+                <span style={{ color: getChangeColor(dayChange) }}>
+                  {dayChange}
+                </span>
+              </ListGroup.Item>
+              {/* <ListGroup.Item style={{ fontSize: ".8em" }}>
                   Week Change:{" "}
                   <span style={{ color: getChangeColor(weekChange) }}>
                     {weekChange}
                   </span>
                 </ListGroup.Item> */}
-                <ListGroup.Item style={{ fontSize: ".8em" }}>
-                  Month Change:{" "}
-                  <span style={{ color: getChangeColor(monthChange) }}>
-                    {monthChange}
-                  </span>
-                </ListGroup.Item>
-              </ListGroup>
-            </Card.Text>
+              <ListGroup.Item style={{ fontSize: ".5em" }}>
+                Month Change:{" "}
+                <span style={{ color: getChangeColor(monthChange) }}>
+                  {monthChange}
+                </span>
+              </ListGroup.Item>
+            </ListGroup>
+            {/* </Card.Text> */}
             <ListGroup>
               <ListGroup.Item
-                classsName="spark-title"
+                className="spark-title"
                 style={{ fontSize: ".4em" }}
               >
                 Past Week Performance
