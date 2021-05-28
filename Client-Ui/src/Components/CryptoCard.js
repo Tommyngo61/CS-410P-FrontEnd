@@ -18,7 +18,7 @@ export default function CryptoCard(props) {
   const [sparkColor, setColor] = useState();
   const [cryptoLogo, setLogo] = useState();
   const [dayChange, setDayChange] = useState();
-  const [weekChange, setWeekChange] = useState();
+  // const [weekChange, setWeekChange] = useState();
   const [monthChange, setMonthChange] = useState();
 
   const url = `https://api.coingecko.com/api/v3/coins/${props.id}?sparkline=true`;
@@ -72,9 +72,9 @@ export default function CryptoCard(props) {
           setDayChange(
             formatAsPercent(data.market_data.price_change_percentage_24h)
           );
-          setWeekChange(
-            formatAsPercent(data.market_data.price_change_percentage_7d)
-          );
+          // setWeekChange(
+          //   formatAsPercent(data.market_data.price_change_percentage_7d)
+          // );
           setMonthChange(
             formatAsPercent(data.market_data.price_change_percentage_30d)
           );
@@ -125,12 +125,12 @@ export default function CryptoCard(props) {
                     {dayChange}
                   </span>
                 </ListGroup.Item>
-                <ListGroup.Item style={{ fontSize: ".8em" }}>
+                {/* <ListGroup.Item style={{ fontSize: ".8em" }}>
                   Week Change:{" "}
                   <span style={{ color: getChangeColor(weekChange) }}>
                     {weekChange}
                   </span>
-                </ListGroup.Item>
+                </ListGroup.Item> */}
                 <ListGroup.Item style={{ fontSize: ".8em" }}>
                   Month Change:{" "}
                   <span style={{ color: getChangeColor(monthChange) }}>
