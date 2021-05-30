@@ -10,7 +10,7 @@ function Home() {
   return (
     <div className="homepage">
       <h1>Crypto DashBoard</h1>
-      <Container className="card-container mt-5">
+      <Container className="card-container-home">
         {/* <Row>
           <Col>
             <Card border="primary">

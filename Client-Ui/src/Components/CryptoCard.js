@@ -47,7 +47,7 @@ export default function CryptoCard(props) {
   };
 
   const getChangeColor = (changeValue) => {
-    if (parseInt(changeValue) < 0) {
+    if (parseFloat(changeValue) < 0) {
       return "red";
     } else {
       return "green";
