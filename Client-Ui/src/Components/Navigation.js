@@ -103,11 +103,6 @@ function Navigation(props) {
               <MenuItem icon={<RiSettings2Fill />}>Settings</MenuItem>
             </Menu>
           </SidebarContent>
-          <SidebarFooter>
-            <Menu iconShape="square">
-              <MenuItem icon={<FiLogOut />}>Logout</MenuItem>
-            </Menu>
-          </SidebarFooter>
         </ProSidebar>
       </div>
       <Switch>
