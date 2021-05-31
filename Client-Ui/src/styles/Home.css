@@ -4,9 +4,15 @@
 }
 
 .card-container {
-  margin-left: 20em !important;
   text-align: center;
 }
+
+.card-container-home {
+  margin-left: 280px !important;
+  text-align: center;
+  padding: 10px 20px !important;
+}
+
 .card-1 {
   background-color: orange !important;
 }

@@ -3,7 +3,11 @@
   width: 220px;
 }
 #header .pro-sidebar {
-  height: 100vh;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 180px;
 }
 #header .closemenu {
   color: white;
@@ -17,10 +21,10 @@
   top: 15em;
   cursor: pointer;
 }
-#header .pro-sidebar {
+/* #header .pro-sidebar {
   width: 100%;
   min-width: 100%;
-}
+} */
 #header .pro-sidebar.collapsed {
   width: 80px;
   min-width: 80px;

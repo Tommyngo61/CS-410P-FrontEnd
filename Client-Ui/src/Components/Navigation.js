@@ -20,7 +20,7 @@ import Dogecoin from "./Dogecoin";
 import TableView from "./TableView";
 import Chart from "./Chart";
 import { FaBitcoin } from "react-icons/fa";
-import { RiSettings2Fill } from "react-icons/ri";
+import { RiSettings2Fill, RiMoneyDollarCircleFill } from "react-icons/ri";
 import { BiTable } from "react-icons/bi";
 import { BsFillBarChartFill } from "react-icons/bs";
 import { BsPeople, BsBook } from "react-icons/bs";
@@ -49,9 +49,15 @@ function Navigation(props) {
         {/* collapsed props to change menu size using menucollapse state */}
         <ProSidebar collapsed={menuCollapse}>
           <SidebarHeader>
-            <div className="logotext">
+            <div className="logotext d-flex justify-content-center">
               {/* small and big change using menucollapse state */}
-              <p>{menuCollapse ? "Logo" : "Cyptocurrency DashBoard"}</p>
+              <p>
+                {menuCollapse ? (
+                  <RiMoneyDollarCircleFill size={60} />
+                ) : (
+                  "Cyptocurrency DashBoard"
+                )}
+              </p>
             </div>
             <div className="closemenu" onClick={menuIconClick}>
               {/* changing menu collapse icon on click */}
@@ -97,11 +103,6 @@ function Navigation(props) {
               <MenuItem icon={<RiSettings2Fill />}>Settings</MenuItem>
             </Menu>
           </SidebarContent>
-          <SidebarFooter>
-            <Menu iconShape="square">
-              <MenuItem icon={<FiLogOut />}>Logout</MenuItem>
-            </Menu>
-          </SidebarFooter>
         </ProSidebar>
       </div>
       <Switch>

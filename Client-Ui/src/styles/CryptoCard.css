@@ -1,5 +1,5 @@
 .crypto-card:hover {
-  background-color: rgb(149, 217, 229);
+  background-color: rgb(180, 180, 180);
   border-color: black;
 }
 
@@ -40,4 +40,13 @@
 
 .spark-chart {
   border-top: none;
+}
+
+.crypto-card .list-group {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.crypto-card {
+  margin: 10px 0px;
 }

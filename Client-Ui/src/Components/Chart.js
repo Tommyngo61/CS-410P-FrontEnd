@@ -90,7 +90,7 @@ function Chart(props) {
   };
 
   return (
-    <Container className=" mt-5 d-flex justify-content-center">
+    <Container className="mr-5 mt-5 d-flex justify-content-center">
       <Row>
         <Form onSubmit={handleSubmit}>
           <Form.Group controlId="search">
@@ -188,7 +188,7 @@ function Chart(props) {
                 },
               }}
               width={700}
-              height={600}
+              height={450}
             />
           </Row>
         </Container>

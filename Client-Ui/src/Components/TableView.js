@@ -23,7 +23,7 @@ function TableView() {
   return (
     <>
       {isLoading ? (
-        <Container className="TableView mt-5 d-flex justify-content-center">
+        <Container className="TableView mr-5 mt-5 d-flex justify-content-center">
           <h1>Trending Cryptocurrency</h1>
           <Table striped bordered hover>
             <thead>
