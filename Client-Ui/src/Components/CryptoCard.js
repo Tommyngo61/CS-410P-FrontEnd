@@ -18,7 +18,7 @@ export default function CryptoCard(props) {
   const [sparkColor, setColor] = useState();
   const [cryptoLogo, setLogo] = useState();
   const [dayChange, setDayChange] = useState();
-  const [weekChange, setWeekChange] = useState();
+  // const [weekChange, setWeekChange] = useState();
   const [monthChange, setMonthChange] = useState();
 
   const url = `https://api.coingecko.com/api/v3/coins/${props.id}?sparkline=true`;
@@ -47,7 +47,7 @@ export default function CryptoCard(props) {
   };
 
   const getChangeColor = (changeValue) => {
-    if (parseInt(changeValue) < 0) {
+    if (parseFloat(changeValue) < 0) {
       return "red";
     } else {
       return "green";
@@ -72,9 +72,9 @@ export default function CryptoCard(props) {
           setDayChange(
             formatAsPercent(data.market_data.price_change_percentage_24h)
           );
-          setWeekChange(
-            formatAsPercent(data.market_data.price_change_percentage_7d)
-          );
+          // setWeekChange(
+          //   formatAsPercent(data.market_data.price_change_percentage_7d)
+          // );
           setMonthChange(
             formatAsPercent(data.market_data.price_change_percentage_30d)
           );
@@ -111,37 +111,37 @@ export default function CryptoCard(props) {
                 style={{ margin: "auto" }}
               ></img>
             </Row>
-            <Card.Text style={{ display: "inline-block" }}>
-              <ListGroup>
-                <ListGroup.Item style={{ fontSize: ".8em" }}>
-                  Symbol: {data.symbol.toUpperCase()}
-                </ListGroup.Item>
-                <ListGroup.Item style={{ fontSize: ".8em" }}>
-                  Current Price: {price}
-                </ListGroup.Item>
-                <ListGroup.Item style={{ fontSize: ".8em" }}>
-                  Day Change:{" "}
-                  <span style={{ color: getChangeColor(dayChange) }}>
-                    {dayChange}
-                  </span>
-                </ListGroup.Item>
-                <ListGroup.Item style={{ fontSize: ".8em" }}>
+            {/* <Card.Text style={{ display: "inline-block" }}> */}
+            <ListGroup>
+              <ListGroup.Item style={{ fontSize: ".5em" }}>
+                Symbol: {data.symbol.toUpperCase()}
+              </ListGroup.Item>
+              <ListGroup.Item style={{ fontSize: ".5em" }}>
+                Current Price: {price}
+              </ListGroup.Item>
+              <ListGroup.Item style={{ fontSize: ".5em" }}>
+                Day Change:{" "}
+                <span style={{ color: getChangeColor(dayChange) }}>
+                  {dayChange}
+                </span>
+              </ListGroup.Item>
+              {/* <ListGroup.Item style={{ fontSize: ".8em" }}>
                   Week Change:{" "}
                   <span style={{ color: getChangeColor(weekChange) }}>
                     {weekChange}
                   </span>
-                </ListGroup.Item>
-                <ListGroup.Item style={{ fontSize: ".8em" }}>
-                  Month Change:{" "}
-                  <span style={{ color: getChangeColor(monthChange) }}>
-                    {monthChange}
-                  </span>
-                </ListGroup.Item>
-              </ListGroup>
-            </Card.Text>
+                </ListGroup.Item> */}
+              <ListGroup.Item style={{ fontSize: ".5em" }}>
+                Month Change:{" "}
+                <span style={{ color: getChangeColor(monthChange) }}>
+                  {monthChange}
+                </span>
+              </ListGroup.Item>
+            </ListGroup>
+            {/* </Card.Text> */}
             <ListGroup>
               <ListGroup.Item
-                classsName="spark-title"
+                className="spark-title"
                 style={{ fontSize: ".4em" }}
               >
                 Past Week Performance
