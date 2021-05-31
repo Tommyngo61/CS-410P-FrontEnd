@@ -70,10 +70,8 @@ export default function MarketCapChart() {
       await axios
         .get(url)
         .then(({ data }) => {
-          console.log(data);
           setData(data);
           setAllFields(data);
-          console.log("names", coinNames);
         })
         .catch((err) => console.log(err));
       setIsLoading(true);
